@@ -69,32 +69,43 @@ public class jogoDaVelhaForm extends javax.swing.JFrame {
             cliqueBotoes(e);
         }
         );
+                btn8.addActionListener(
+                (ActionEvent e)
+                -> {
+            cliqueBotoes(e);
+        }
+        );
+                        btn9.addActionListener(
+                (ActionEvent e)
+                -> {
+            cliqueBotoes(e);
+        }
+        );
 
     }
-   private boolean vez = false; //false = x, true = 0
+    private boolean vez = false; //false = x, true = 0
     private int jogadas = 0;
     boolean temVencedor = verificaVencedor();
-    
+
     public void cliqueBotoes(ActionEvent e) {
-            lblVez.setText("X");  
+          lblVez.setText(vez ? "O" : "X");
         JButton btn = (JButton) (e.getSource());//cast
         btn.setText(lblVez.getText());
+        
         btn.setEnabled(false);
         vez = !vez;
 
+     
         jogadas++;
-
+       /* if (temVencedor) {
+            JOptionPane.showMessageDialog(null, "O vencedor é: " + lblVez.getText());
+        }
+*/
         if (jogadas == 9) {
             JOptionPane.showMessageDialog(null, "Deu velha");
         }
-        if (temVencedor) {
-            JOptionPane.showMessageDialog(null, "O vencedor é: " + lblVez.getText());
-        }
-        lblVez.setText(vez ? "O" : "X");
 
     }
-
- 
 
     private boolean verificaVencedor() {
         return true;
@@ -167,15 +178,11 @@ public class jogoDaVelhaForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(lblVez)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +203,8 @@ public class jogoDaVelhaForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -204,7 +212,7 @@ public class jogoDaVelhaForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(lblVez)
-                .addGap(65, 65, 65)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,10 +227,12 @@ public class jogoDaVelhaForm extends javax.swing.JFrame {
                     .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
